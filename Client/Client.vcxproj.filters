@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\ToDo">
+      <UniqueIdentifier>{e536c913-9a48-4985-9aa1-f1b8d7b6060f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Done">
+      <UniqueIdentifier>{c02791e7-e72f-4851-94cb-a6b4a0480ddc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Done">
+      <UniqueIdentifier>{283594f1-f575-4b79-a4df-39120d504f4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\ToDo">
+      <UniqueIdentifier>{07c7c44c-bc1a-45f4-a82f-dcd33052bcd1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="blackforestclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="cameraclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="cpuclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="entitylistclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="fontclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="fontshaderclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="fpsclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="frustumclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="InputClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="lightclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="modelclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="positionclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="quadtreeclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="skydomeclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="skydomeshaderclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="stateclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="terrainclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="textclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="timerclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterfaceClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="ApplicationClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="terrainshaderclass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShaderClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="BitmapClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blackforestclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="cameraclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="cpuclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="entitylistclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="fontclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="fontshaderclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="fpsclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="frustumclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="InputClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="lightclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="modelclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="positionclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="quadtreeclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="skydomeclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="skydomeshaderclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="stateclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="terrainclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="terrainshaderclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="textclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="timerclass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterfaceClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="ApplicationClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkMessages.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShaderClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
