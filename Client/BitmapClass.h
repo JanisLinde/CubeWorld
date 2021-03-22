@@ -4,11 +4,12 @@
 #ifndef _BITMAPCLASS_H_
 #define _BITMAPCLASS_H_
 
+#include <DirectXMath.h>
 
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "textureclass.h"
+#include "TextureClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,8 +20,8 @@ class BitmapClass
 private:
 	struct VertexType
 	{
-		D3DXVECTOR3 position;
-	    D3DXVECTOR2 texture;
+		DirectX::XMFLOAT3 position;
+	    DirectX::XMFLOAT2 texture;
 	};
 
 public:
@@ -28,26 +29,26 @@ public:
 	BitmapClass(const BitmapClass&);
 	~BitmapClass();
 
-	bool Initialize(ID3D10Device*, int, int, WCHAR*, int, int, int, int);
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, int screenWidth, int screenHeight, char* textureFilename, int bitmapWidth, int bitmapHeight, int locationX, int locationY);
 	void Shutdown();
-	bool Render(ID3D10Device*, int, int);
+	bool Render(ID3D11DeviceContext* deviceContext, int positionX, int positionY);
 
 	int GetIndexCount();
-	ID3D10ShaderResourceView* GetTexture();
+	ID3D11ShaderResourceView* GetTexture();
 	int GetLocationX();
 	int GetLocationY();
 
 private:
-	bool InitializeBuffers(ID3D10Device*);
+	bool InitializeBuffers(ID3D11Device* device);
 	void ShutdownBuffers();
-	bool UpdateBuffers(int, int);
-	void RenderBuffers(ID3D10Device*);
+	bool UpdateBuffers(ID3D11DeviceContext* deviceContext, int positionX, int positionY);
+	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
-	bool LoadTexture(ID3D10Device*, WCHAR*);
+	bool LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename);
 	void ReleaseTexture();
 
 private:
-	ID3D10Buffer *m_vertexBuffer, *m_indexBuffer;
+	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 	TextureClass* m_Texture;
 	int m_screenWidth, m_screenHeight;
