@@ -27,22 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="entitylistclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="frustumclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="modelclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="NetworkClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="quadtreeclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="terrainclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -53,9 +38,6 @@
     </ClCompile>
     <ClCompile Include="SystemClass.cpp">
       <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="terrainshaderclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="TextureShaderClass.cpp">
       <Filter>Quelldateien\Done</Filter>
@@ -105,36 +87,36 @@
     <ClCompile Include="SkydomeClass.cpp">
       <Filter>Quelldateien\Done</Filter>
     </ClCompile>
-    <ClCompile Include="SkydomeShaderClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="StateClass.cpp">
       <Filter>Quelldateien\Done</Filter>
     </ClCompile>
     <ClCompile Include="TimerClass.cpp">
       <Filter>Quelldateien\Done</Filter>
     </ClCompile>
+    <ClCompile Include="SkydomeShaderClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainShaderClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityListClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="FrustumClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTreeClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="entitylistclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="frustumclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="modelclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="NetworkClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="quadtreeclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="terrainclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="terrainshaderclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="ApplicationClass.h">
@@ -194,33 +176,51 @@
     <ClInclude Include="SkydomeClass.h">
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
-    <ClInclude Include="SkydomeShaderClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="StateClass.h">
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
     <ClInclude Include="TimerClass.h">
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="font.fx">
-      <Filter>Ressourcendateien</Filter>
-    </FxCompile>
-    <FxCompile Include="skydome.fx">
-      <Filter>Ressourcendateien</Filter>
-    </FxCompile>
-    <FxCompile Include="terrain.fx">
-      <Filter>Ressourcendateien</Filter>
-    </FxCompile>
-    <FxCompile Include="texture.fx">
-      <Filter>Ressourcendateien</Filter>
-    </FxCompile>
+    <ClInclude Include="SkydomeShaderClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainShaderClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityListClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="FrustumClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTreeClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDo.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="font.fx">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="skydome.fx">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="terrain.fx">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="texture.fx">
+      <Filter>Ressourcendateien</Filter>
+    </None>
   </ItemGroup>
 </Project>

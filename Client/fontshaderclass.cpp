@@ -357,7 +357,7 @@ bool FontShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, Di
 	// Set shader texture resource in the pixel shader.
 	deviceContext->PSSetShaderResources(0, 1, &texture);
 
-	return;
+	return true;
 }
 
 

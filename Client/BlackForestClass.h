@@ -21,7 +21,7 @@
 #include "ModelClass.h"
 #include "EntityListClass.h"
 #include "FrustumClass.h"
-#include "quadtreeclass.h"
+#include "QuadTreeClass.h"
 #include "UserInterfaceClass.h"
 
 

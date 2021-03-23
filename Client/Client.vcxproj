@@ -86,12 +86,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3dcompiler.lib;d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,24 +146,24 @@
     <ClCompile Include="CameraClass.cpp" />
     <ClCompile Include="CPUClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
-    <ClCompile Include="entitylistclass.cpp" />
+    <ClCompile Include="EntityListClass.cpp" />
     <ClCompile Include="FontClass.cpp" />
     <ClCompile Include="FontShaderClass.cpp" />
     <ClCompile Include="FPSClass.cpp" />
-    <ClCompile Include="frustumclass.cpp" />
+    <ClCompile Include="FrustumClass.cpp" />
     <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="LightClass.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="modelclass.cpp" />
+    <ClCompile Include="ModelClass.cpp" />
     <ClCompile Include="NetworkClass.cpp" />
     <ClCompile Include="PositionClass.cpp" />
-    <ClCompile Include="quadtreeclass.cpp" />
+    <ClCompile Include="QuadTreeClass.cpp" />
     <ClCompile Include="SkydomeClass.cpp" />
     <ClCompile Include="SkydomeShaderClass.cpp" />
     <ClCompile Include="StateClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
-    <ClCompile Include="terrainclass.cpp" />
-    <ClCompile Include="terrainshaderclass.cpp" />
+    <ClCompile Include="TerrainClass.cpp" />
+    <ClCompile Include="TerrainShaderClass.cpp" />
     <ClCompile Include="TextClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
     <ClCompile Include="TextureShaderClass.cpp" />
@@ -176,24 +177,24 @@
     <ClInclude Include="CameraClass.h" />
     <ClInclude Include="CPUClass.h" />
     <ClInclude Include="D3DClass.h" />
-    <ClInclude Include="entitylistclass.h" />
+    <ClInclude Include="EntityListClass.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="FontShaderClass.h" />
     <ClInclude Include="FPSClass.h" />
-    <ClInclude Include="frustumclass.h" />
+    <ClInclude Include="FrustumClass.h" />
     <ClInclude Include="InputClass.h" />
     <ClInclude Include="LightClass.h" />
-    <ClInclude Include="modelclass.h" />
+    <ClInclude Include="ModelClass.h" />
     <ClInclude Include="NetworkClass.h" />
     <ClInclude Include="NetworkMessages.h" />
     <ClInclude Include="PositionClass.h" />
-    <ClInclude Include="quadtreeclass.h" />
+    <ClInclude Include="QuadTreeClass.h" />
     <ClInclude Include="SkydomeClass.h" />
     <ClInclude Include="SkydomeShaderClass.h" />
     <ClInclude Include="StateClass.h" />
     <ClInclude Include="SystemClass.h" />
-    <ClInclude Include="terrainclass.h" />
-    <ClInclude Include="terrainshaderclass.h" />
+    <ClInclude Include="TerrainClass.h" />
+    <ClInclude Include="TerrainShaderClass.h" />
     <ClInclude Include="TextClass.h" />
     <ClInclude Include="TextureClass.h" />
     <ClInclude Include="TextureShaderClass.h" />
@@ -201,10 +202,18 @@
     <ClInclude Include="UserInterfaceClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="font.fx" />
-    <FxCompile Include="skydome.fx" />
-    <FxCompile Include="terrain.fx" />
-    <FxCompile Include="texture.fx" />
+    <None Include="font.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="skydome.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="terrain.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="texture.fx">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDo.txt" />

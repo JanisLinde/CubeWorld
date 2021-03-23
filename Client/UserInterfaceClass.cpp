@@ -35,7 +35,7 @@ bool UserInterfaceClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWid
 	}
 
 	// Initialize the chat window bitmap object.
-	result = m_ChatWindow->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), screenWidth, screenHeight, "data/chat.dds", 600, 200, m_chatWindowX, m_chatWindowY);
+	result = m_ChatWindow->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), screenWidth, screenHeight, "data/chat.tga", 600, 200, m_chatWindowX, m_chatWindowY);
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the chat window object.", L"Error", MB_OK);

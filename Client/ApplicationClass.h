@@ -14,7 +14,7 @@
 /////////////
 // GLOBALS //
 /////////////
-const bool FULL_SCREEN = true;
+const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
 const float SCREEN_NEAR = 0.1f;
@@ -26,12 +26,12 @@ const float SCREEN_NEAR = 0.1f;
 #include "InputClass.h"
 #include "D3DClass.h"
 #include "NetworkClass.h"
-#include "timerclass.h"
-#include "fpsclass.h"
-#include "cpuclass.h"
-#include "userinterfaceclass.h"
-#include "stateclass.h"
-#include "blackforestclass.h"
+#include "TimerClass.h"
+#include "FPSClass.h"
+#include "CPUClass.h"
+#include "UserInterfaceClass.h"
+#include "StateClass.h"
+#include "BlackForestClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////

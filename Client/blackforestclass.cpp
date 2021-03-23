@@ -110,7 +110,7 @@ bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth
 	}
 
 	// Initialize the terrain object.
-	result = m_Terrain->Initialize("../Engine/data/blackforest_hm.bmp", "../Engine/data/blackforest_cm.bmp", 12.5f);
+	result = m_Terrain->Initialize("data/blackforest_hm.tga", "data/blackforest_cm.tga", 12.5f);
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the terrain object.", L"Error", MB_OK);
@@ -155,7 +155,7 @@ bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth
 	}
 
 	// Initialize the model object.
-	result = m_CubeModel1->Initialize(Direct3D->GetDevice(), "../Engine/data/cube.txt", L"../Engine/data/char1.dds");
+	result = m_CubeModel1->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), "../Engine/data/cube.txt", "../Engine/data/char1.dds");
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
@@ -170,7 +170,7 @@ bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth
 	}
 
 	// Initialize the model object.
-	result = m_CubeModel2->Initialize(Direct3D->GetDevice(), "../Engine/data/cube.txt", L"../Engine/data/char2.dds");
+	result = m_CubeModel2->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), "../Engine/data/cube.txt", "../Engine/data/char2.dds");
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the secpmd model object.", L"Error", MB_OK);
@@ -438,8 +438,8 @@ void BlackForestClass::HandleMovementInput(InputClass* Input, float frameTime)
 
 bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterface)
 {
-	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix, baseViewMatrix, translateMatrix;
-	D3DXVECTOR3 cameraPosition;
+	DirectX::XMMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix, baseViewMatrix, translateMatrix;
+	DirectX::XMFLOAT3 cameraPosition;
 	bool result, foundHeight;
 	int i;
 	float posX, posY, posZ, rotX, rotY, rotZ, height;
@@ -476,7 +476,7 @@ bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterf
 	cameraPosition = m_Camera->GetPosition();
 
 	// Translate the sky dome to be centered around the camera position.
-	D3DXMatrixTranslation(&worldMatrix, cameraPosition.x, cameraPosition.y, cameraPosition.z);
+	worldMatrix = DirectX::XMMatrixTranslation(cameraPosition.x, cameraPosition.y, cameraPosition.z);
 
 	// Turn off back face culling.
 	Direct3D->TurnOffCulling();
@@ -485,8 +485,8 @@ bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterf
 	Direct3D->TurnZBufferOff();
 
 	// Render the sky dome using the sky dome shader.
-	m_SkyDome->Render(Direct3D->GetDevice());
-	m_SkyDomeShader->Render(Direct3D->GetDevice(), m_SkyDome->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, m_SkyDome->GetApexColor(), m_SkyDome->GetCenterColor());
+	m_SkyDome->Render(Direct3D->GetDeviceContext());
+	m_SkyDomeShader->Render(Direct3D->GetDeviceContext(), m_SkyDome->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, m_SkyDome->GetApexColor(), m_SkyDome->GetCenterColor());
 
 	// Turn back face culling back on.
 	Direct3D->TurnOnCulling();
@@ -498,11 +498,11 @@ bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterf
 	Direct3D->GetWorldMatrix(worldMatrix);
 
 	// Render the terrain inside the quad tree using the terrain shader.
-	m_TerrainShader->SetShaderParameters(worldMatrix, viewMatrix, projectionMatrix, m_Light->GetDiffuseColor(), m_Light->GetDirection());
-	m_QuadTree->Render(m_Frustum, Direct3D->GetDevice(), m_TerrainShader);
+	m_TerrainShader->SetShaderParameters(Direct3D->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, m_Light->GetDiffuseColor(), m_Light->GetDirection());
+	m_QuadTree->Render(m_Frustum, Direct3D->GetDeviceContext(), m_TerrainShader);
 	
 	// Update the terrain polygon render count string.
-	result = UserInterface->UpdateDrawCount(m_QuadTree->GetDrawCount());
+	result = UserInterface->UpdateDrawCount(Direct3D->GetDeviceContext(), m_QuadTree->GetDrawCount());
 	if(!result)
 	{ 
 		return false;
@@ -525,22 +525,22 @@ bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterf
 			}
 
 			// Transform the world matrix by the user location.
-			D3DXMatrixRotationY(&worldMatrix, rotY * ((float)D3DX_PI / 180.0f));
-			D3DXMatrixTranslation(&translateMatrix, posX, posY, posZ);
-			D3DXMatrixMultiply(&worldMatrix, &worldMatrix, &translateMatrix); 
+			worldMatrix = DirectX::XMMatrixRotationY(rotY * ((float)DirectX::XM_PI / 180.0f));
+			translateMatrix = DirectX::XMMatrixTranslation(posX, posY, posZ);
+			worldMatrix = DirectX::XMMatrixMultiply(worldMatrix, translateMatrix);
 
 			if(m_EntityList[i].GetEntityType() == ENTITY_TYPE_USER)
 			{
 				// Render the cube model with the texture shader to represent the online user.
-				m_CubeModel1->Render(Direct3D->GetDevice());
-				m_TextureShader->Render(Direct3D->GetDevice(), m_CubeModel1->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, m_CubeModel1->GetTexture());
+				m_CubeModel1->Render(Direct3D->GetDeviceContext());
+				m_TextureShader->Render(Direct3D->GetDeviceContext(), m_CubeModel1->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, m_CubeModel1->GetTexture());
 			}
 
 			if(m_EntityList[i].GetEntityType() == ENTITY_TYPE_AI)
 			{
 				// Render the cube model with the texture shader to represent the AI entity.
-				m_CubeModel2->Render(Direct3D->GetDevice());
-				m_TextureShader->Render(Direct3D->GetDevice(), m_CubeModel2->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, m_CubeModel2->GetTexture());
+				m_CubeModel2->Render(Direct3D->GetDeviceContext());
+				m_TextureShader->Render(Direct3D->GetDeviceContext(), m_CubeModel2->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, m_CubeModel2->GetTexture());
 			}
 
 			// Reset the world matrix.

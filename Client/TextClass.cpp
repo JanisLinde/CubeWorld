@@ -35,8 +35,8 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 	}
 
 	// Initialize the font object.
-	char fontFilename[64] = "../Engine/data/font/fontdata.txt";
-	char textureFilename[64] = "../Engine/data/font/font.dds";
+	char fontFilename[64] = "data/font/fontdata.txt";
+	char textureFilename[64] = "data/font/font.tga";
 
 	result = m_Font->Initialize(device, deviceContext, fontFilename, textureFilename);
 	if(!result)

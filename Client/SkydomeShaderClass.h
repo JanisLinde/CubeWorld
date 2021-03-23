@@ -42,8 +42,7 @@ public:
 	bool Initialize(ID3D11Device* device, HWND hwnd);
 	void Shutdown();
 	void Render(ID3D11DeviceContext* deviceContext, int indexCount, DirectX::XMMATRIX worldMatrix,
-		DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix, ID3D11ShaderResourceView* texture,
-		DirectX::XMFLOAT4 apexColor, DirectX::XMFLOAT4 centerColor);
+		DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix, DirectX::XMFLOAT4 apexColor, DirectX::XMFLOAT4 centerColor);
 
 private:
 	bool InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* filename);
@@ -51,7 +50,7 @@ private:
 	void OutputShaderErrorMessage(ID3D10Blob*, HWND, WCHAR*);
 
 	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, DirectX::XMMATRIX worldMatrix,
-		DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix, ID3D11ShaderResourceView* texture,
+		DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix,
 		DirectX::XMFLOAT4 apexColor, DirectX::XMFLOAT4 centerColor);
 	void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);
 
@@ -61,7 +60,6 @@ private:
 	ID3D11InputLayout* m_layout;
 	ID3D11Buffer* m_matrixBuffer;
 	ID3D11Buffer* m_colorBuffer;
-	ID3D11SamplerState* m_sampleState;
 };
 
 #endif
