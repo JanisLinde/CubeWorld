@@ -8,8 +8,9 @@
 //////////////
 // INCLUDES //
 //////////////
-#include <d3d10.h>
-#include <d3dx10math.h>
+#include <d3d11.h>
+#include <d3dcompiler.h>
+#include <DirectXMath.h>
 #include <fstream>
 using namespace std;
 
@@ -19,33 +20,43 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 class TerrainShaderClass
 {
+private:
+	struct MatrixBufferType
+	{
+		DirectX::XMMATRIX world;
+		DirectX::XMMATRIX view;
+		DirectX::XMMATRIX projection;
+	};
+
+	struct LightBufferType
+	{
+		DirectX::XMFLOAT4 diffuseColor;
+		DirectX::XMFLOAT3 direction;
+	};
+
 public:
 	TerrainShaderClass();
-	TerrainShaderClass(const TerrainShaderClass&);
+	TerrainShaderClass(const TerrainShaderClass& other);
 	~TerrainShaderClass();
 
-	bool Initialize(ID3D10Device*, HWND);
+	bool Initialize(ID3D11Device* device, HWND hwnd);
 	void Shutdown();
 
-	void SetShaderParameters(D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, D3DXVECTOR4, D3DXVECTOR3);
-	void RenderShader(ID3D10Device*, int);
+	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, DirectX::XMMATRIX worldMatrix,
+		DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix, DirectX::XMFLOAT4 lightDiffuseColor, DirectX::XMFLOAT3 lightDirection);
+	void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);
 
 private:
-	bool InitializeShader(ID3D10Device*, HWND, WCHAR*);
+	bool InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* filename);
 	void ShutdownShader();
 	void OutputShaderErrorMessage(ID3D10Blob*, HWND, WCHAR*);
 
 private:
-	ID3D10Effect* m_effect;
-	ID3D10EffectTechnique* m_technique;
-	ID3D10InputLayout* m_layout;
-
-	ID3D10EffectMatrixVariable* m_worldMatrixPtr;
-	ID3D10EffectMatrixVariable* m_viewMatrixPtr;
-	ID3D10EffectMatrixVariable* m_projectionMatrixPtr;
-
-	ID3D10EffectVectorVariable* m_lightDiffuseColorPtr;
-	ID3D10EffectVectorVariable* m_lightDirectionPtr;
+	ID3D11VertexShader* m_vertexShader;
+	ID3D11PixelShader* m_pixelShader;
+	ID3D11InputLayout* m_layout;
+	ID3D11Buffer* m_matrixBuffer;
+	ID3D11Buffer* m_lightBuffer;
 };
 
 #endif

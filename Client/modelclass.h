@@ -8,6 +8,7 @@
 //////////////
 // INCLUDES //
 //////////////
+#include <DirectXMath.h>
 #include <fstream>
 using namespace std;
 
@@ -15,7 +16,7 @@ using namespace std;
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "textureclass.h"
+#include "TextureClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -26,9 +27,9 @@ class ModelClass
 private:
 	struct VertexType
 	{
-		D3DXVECTOR3 position;
-	    D3DXVECTOR2 texture;
-		D3DXVECTOR3 normal;
+		DirectX::XMFLOAT3 position;
+		DirectX::XMFLOAT2 texture;
+		DirectX::XMFLOAT3 normal;
 	};
 
 	struct ModelType
@@ -40,29 +41,29 @@ private:
 
 public:
 	ModelClass();
-	ModelClass(const ModelClass&);
+	ModelClass(const ModelClass& other);
 	~ModelClass();
 
-	bool Initialize(ID3D10Device*, char*, WCHAR*);
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const char* modelFilename, const char* textureFilename);
 	void Shutdown();
-	void Render(ID3D10Device*);
+	void Render(ID3D11DeviceContext* deviceContext);
 
 	int GetIndexCount();
-	ID3D10ShaderResourceView* GetTexture();
+	ID3D11ShaderResourceView* GetTexture();
 
 private:
-	bool InitializeBuffers(ID3D10Device*);
+	bool InitializeBuffers(ID3D11Device* device);
 	void ShutdownBuffers();
-	void RenderBuffers(ID3D10Device*);
+	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
-	bool LoadTexture(ID3D10Device*, WCHAR*);
+	bool LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const char* textureFilename);
 	void ReleaseTexture();
 
-	bool LoadModel(char*);
+	bool LoadModel(const char* filename);
 	void ReleaseModel();
 
 private:
-	ID3D10Buffer *m_vertexBuffer, *m_indexBuffer;
+	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 	TextureClass* m_Texture;
 	ModelType* m_model;

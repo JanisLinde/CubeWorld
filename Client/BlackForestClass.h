@@ -16,7 +16,7 @@
 #include "SkydomeClass.h"
 #include "SkydomeShaderClass.h"
 #include "TerrainClass.h"
-#include "terrainshaderclass.h"
+#include "TerrainShaderClass.h"
 #include "TextureShaderClass.h"
 #include "modelclass.h"
 #include "entitylistclass.h"
