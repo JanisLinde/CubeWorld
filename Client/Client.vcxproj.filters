@@ -42,12 +42,6 @@
     <ClCompile Include="entitylistclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
-    <ClCompile Include="fontclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="fontshaderclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="fpsclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
@@ -84,13 +78,7 @@
     <ClCompile Include="terrainclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
-    <ClCompile Include="textclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="timerclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="UserInterfaceClass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -108,11 +96,23 @@
     <ClCompile Include="TextureShaderClass.cpp">
       <Filter>Quelldateien\Done</Filter>
     </ClCompile>
-    <ClCompile Include="BitmapClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="TextureClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="BitmapClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="FontShaderClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="FontClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="TextClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterfaceClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,12 +129,6 @@
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="entitylistclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="fontclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="fontshaderclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="fpsclass.h">
@@ -176,13 +170,7 @@
     <ClInclude Include="terrainshaderclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
-    <ClInclude Include="textclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="timerclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInterfaceClass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="ApplicationClass.h">
@@ -197,11 +185,42 @@
     <ClInclude Include="TextureShaderClass.h">
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
-    <ClInclude Include="BitmapClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="TextureClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
+      <Filter>Headerdateien\Done</Filter>
     </ClInclude>
+    <ClInclude Include="BitmapClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="FontShaderClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="FontClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="TextClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterfaceClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="font.fx">
+      <Filter>Ressourcendateien</Filter>
+    </FxCompile>
+    <FxCompile Include="skydome.fx">
+      <Filter>Ressourcendateien</Filter>
+    </FxCompile>
+    <FxCompile Include="terrain.fx">
+      <Filter>Ressourcendateien</Filter>
+    </FxCompile>
+    <FxCompile Include="texture.fx">
+      <Filter>Ressourcendateien</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ToDo.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
   </ItemGroup>
 </Project>

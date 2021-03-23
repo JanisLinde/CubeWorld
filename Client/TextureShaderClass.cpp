@@ -24,7 +24,7 @@ bool TextureShaderClass::Initialize(ID3D11Device* device, HWND hwnd)
 {
 	bool result;
 
-	WCHAR vs[] = L"../Engine/texture.hlsl";
+	WCHAR vs[] = L"texture.hlsl";
 
 	// Initialize the shader that will be used to draw the triangle.
 	result = InitializeShader(device, hwnd, vs);
@@ -55,7 +55,6 @@ void TextureShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCou
 
 	return;
 }
-
 
 bool TextureShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* filename)
 {
@@ -202,7 +201,6 @@ bool TextureShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR
 	return true;
 }
 
-
 void TextureShaderClass::ShutdownShader()
 {
 	// Release the sampler state.
@@ -243,7 +241,6 @@ void TextureShaderClass::ShutdownShader()
 	return;
 }
 
-
 void TextureShaderClass::OutputShaderErrorMessage(ID3D10Blob* errorMessage, HWND hwnd, WCHAR* shaderFilename)
 {
 	char* compileErrors;
@@ -278,7 +275,6 @@ void TextureShaderClass::OutputShaderErrorMessage(ID3D10Blob* errorMessage, HWND
 
 	return;
 }
-
 
 bool TextureShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, DirectX::XMMATRIX worldMatrix,
 	DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix, ID3D11ShaderResourceView* texture)
@@ -323,7 +319,6 @@ bool TextureShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext,
 
 	return true;
 }
-
 
 void TextureShaderClass::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount)
 {

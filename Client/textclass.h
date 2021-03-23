@@ -10,12 +10,14 @@
 /////////////
 const int NUM_SENTENCES = 20;
 
+#include <DirectXMath.h>
+
 
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "fontclass.h"
-#include "fontshaderclass.h"
+#include "FontClass.h"
+#include "FontShaderClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -26,7 +28,7 @@ class TextClass
 private:
 	struct SentenceType
 	{
-		ID3D10Buffer *vertexBuffer, *indexBuffer;
+		ID3D11Buffer *vertexBuffer, *indexBuffer;
 		int vertexCount, indexCount, maxLength;
 		float red, green, blue;
 		bool active;
@@ -34,26 +36,26 @@ private:
 
 	struct VertexType
 	{
-		D3DXVECTOR3 position;
-	    D3DXVECTOR2 texture;
+		DirectX::XMFLOAT3 position;
+		DirectX::XMFLOAT2 texture;
 	};
 
 public:
 	TextClass();
-	TextClass(const TextClass&);
+	TextClass(const TextClass& otrher);
 	~TextClass();
 
-	bool Initialize(ID3D10Device*, HWND, int, int);
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, int screenWidth, int screenHeight);
 	void Shutdown();
-	void Render(ID3D10Device*, D3DXMATRIX, D3DXMATRIX, D3DXMATRIX);
+	void Render(ID3D11DeviceContext* deviceContext, DirectX::XMMATRIX worldMatrix, DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX orthoMatrix);
 
-	bool CreateSentence(ID3D10Device*, int, int, char*, int, int, float, float, float);
-	bool UpdateSentence(int, char*, int, int, float, float, float);
+	bool CreateSentence(ID3D11Device* device, ID3D11DeviceContext* deviceContext, int id, int maxLength, char* sentence, int posX, int posY, float red, float green, float blue);
+	bool UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceId, char* text, int positionX, int positionY, float red, float green, float blue);
 
 private:
-	bool InitializeSentence(int, int, ID3D10Device*);
-	void ReleaseSentence(int);
-	void RenderSentence(ID3D10Device*, int, D3DXMATRIX, D3DXMATRIX, D3DXMATRIX);
+	bool InitializeSentence(int sentenceId, int maxLength, ID3D11Device* device);
+	void ReleaseSentence(int sentenceId);
+	void RenderSentence(ID3D11DeviceContext* deviceContext, int sentenceId, DirectX::XMMATRIX worldMatrix, DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX orthoMatrix);
 
 private:
 	FontClass* m_Font;

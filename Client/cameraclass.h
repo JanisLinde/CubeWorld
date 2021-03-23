@@ -8,7 +8,7 @@
 //////////////
 // INCLUDES //
 //////////////
-#include <d3dx10math.h>
+#include <DirectXMath.h>
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -18,28 +18,28 @@ class CameraClass
 {
 public:
 	CameraClass();
-	CameraClass(const CameraClass&);
+	CameraClass(const CameraClass& other);
 	~CameraClass();
 
-	void SetPosition(float, float, float);
-	void SetRotation(float, float, float);
+	void SetPosition(float x, float y, float z);
+	void SetRotation(float x, float y, float z);
 
-	D3DXVECTOR3 GetPosition();
-	D3DXVECTOR3 GetRotation();
+	DirectX::XMFLOAT3 GetPosition();
+	DirectX::XMFLOAT3 GetRotation();
 
 	void Render();
-	void GetViewMatrix(D3DXMATRIX&);
+	void GetViewMatrix(DirectX::XMMATRIX& viewMatrix);
 
 	void GenerateBaseViewMatrix();
-	void GetBaseViewMatrix(D3DXMATRIX&);
+	void GetBaseViewMatrix(DirectX::XMMATRIX& viewMatrix);
 
 	void RenderReflection(float);
-	void GetReflectionViewMatrix(D3DXMATRIX&);
+	void GetReflectionViewMatrix(DirectX::XMMATRIX& viewMatrix);
 
 private:
 	float m_positionX, m_positionY, m_positionZ;
 	float m_rotationX, m_rotationY, m_rotationZ;
-	D3DXMATRIX m_viewMatrix, m_baseViewMatrix, m_reflectionViewMatrix;
+	DirectX::XMMATRIX m_viewMatrix, m_baseViewMatrix, m_reflectionViewMatrix;
 };
 
 #endif

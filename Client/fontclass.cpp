@@ -1,8 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Filename: fontclass.cpp
 ///////////////////////////////////////////////////////////////////////////////
-#include "fontclass.h"
-
+#include "FontClass.h"
 
 FontClass::FontClass()
 {
@@ -10,18 +9,15 @@ FontClass::FontClass()
 	m_Texture = 0;
 }
 
-
 FontClass::FontClass(const FontClass& other)
 {
 }
-
 
 FontClass::~FontClass()
 {
 }
 
-
-bool FontClass::Initialize(ID3D10Device* device, char* fontFilename, WCHAR* textureFilename)
+bool FontClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* fontFilename, char* textureFilename)
 {
 	bool result;
 
@@ -34,7 +30,7 @@ bool FontClass::Initialize(ID3D10Device* device, char* fontFilename, WCHAR* text
 	}
 
 	// Load the texture that has the font characters on it.
-	result = LoadTexture(device, textureFilename);
+	result = LoadTexture(device, deviceContext, textureFilename);
 	if(!result)
 	{
 		return false;
@@ -42,7 +38,6 @@ bool FontClass::Initialize(ID3D10Device* device, char* fontFilename, WCHAR* text
 
 	return true;
 }
-
 
 void FontClass::Shutdown()
 {
@@ -54,7 +49,6 @@ void FontClass::Shutdown()
 
 	return;
 }
-
 
 bool FontClass::LoadFontData(char* filename)
 {
@@ -102,7 +96,6 @@ bool FontClass::LoadFontData(char* filename)
 	return true;
 }
 
-
 void FontClass::ReleaseFontData()
 {
 	// Release the font data array.
@@ -115,8 +108,7 @@ void FontClass::ReleaseFontData()
 	return;
 }
 
-
-bool FontClass::LoadTexture(ID3D10Device* device, WCHAR* filename)
+bool FontClass::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename)
 {
 	bool result;
 
@@ -129,7 +121,7 @@ bool FontClass::LoadTexture(ID3D10Device* device, WCHAR* filename)
 	}
 
 	// Initialize the texture object.
-	result = m_Texture->Initialize(device, filename);
+	result = m_Texture->Initialize(device, deviceContext, filename);
 	if(!result)
 	{
 		return false;
@@ -137,7 +129,6 @@ bool FontClass::LoadTexture(ID3D10Device* device, WCHAR* filename)
 
 	return true;
 }
-
 
 void FontClass::ReleaseTexture()
 {
@@ -152,12 +143,10 @@ void FontClass::ReleaseTexture()
 	return;
 }
 
-
-ID3D10ShaderResourceView* FontClass::GetTexture()
+ID3D11ShaderResourceView* FontClass::GetTexture()
 {
 	return m_Texture->GetTexture();
 }
-
 
 void FontClass::BuildVertexArray(void* vertices, char* sentence, float drawX, float drawY)
 {
@@ -187,29 +176,29 @@ void FontClass::BuildVertexArray(void* vertices, char* sentence, float drawX, fl
 		else
 		{
 			// First triangle in quad.
-			vertexPtr[index].position = D3DXVECTOR3(drawX, drawY, 0.0f);  // Top left.
-			vertexPtr[index].texture = D3DXVECTOR2(m_Font[letter].left, 0.0f);
+			vertexPtr[index].position = DirectX::XMFLOAT3(drawX, drawY, 0.0f);  // Top left.
+			vertexPtr[index].texture = DirectX::XMFLOAT2(m_Font[letter].left, 0.0f);
 			index++;
 
-			vertexPtr[index].position = D3DXVECTOR3((drawX + m_Font[letter].size), (drawY - 16), 0.0f);  // Bottom right.
-			vertexPtr[index].texture = D3DXVECTOR2(m_Font[letter].right, 1.0f);
+			vertexPtr[index].position = DirectX::XMFLOAT3((drawX + m_Font[letter].size), (drawY - 16), 0.0f);  // Bottom right.
+			vertexPtr[index].texture = DirectX::XMFLOAT2(m_Font[letter].right, 1.0f);
 			index++;
 
-			vertexPtr[index].position = D3DXVECTOR3(drawX, (drawY - 16), 0.0f);  // Bottom left.
-			vertexPtr[index].texture = D3DXVECTOR2(m_Font[letter].left, 1.0f);
+			vertexPtr[index].position = DirectX::XMFLOAT3(drawX, (drawY - 16), 0.0f);  // Bottom left.
+			vertexPtr[index].texture = DirectX::XMFLOAT2(m_Font[letter].left, 1.0f);
 			index++;
 
 			// Second triangle in quad.
-			vertexPtr[index].position = D3DXVECTOR3(drawX, drawY, 0.0f);  // Top left.
-			vertexPtr[index].texture = D3DXVECTOR2(m_Font[letter].left, 0.0f);
+			vertexPtr[index].position = DirectX::XMFLOAT3(drawX, drawY, 0.0f);  // Top left.
+			vertexPtr[index].texture = DirectX::XMFLOAT2(m_Font[letter].left, 0.0f);
 			index++;
 
-			vertexPtr[index].position = D3DXVECTOR3(drawX + m_Font[letter].size, drawY, 0.0f);  // Top right.
-			vertexPtr[index].texture = D3DXVECTOR2(m_Font[letter].right, 0.0f);
+			vertexPtr[index].position = DirectX::XMFLOAT3(drawX + m_Font[letter].size, drawY, 0.0f);  // Top right.
+			vertexPtr[index].texture = DirectX::XMFLOAT2(m_Font[letter].right, 0.0f);
 			index++;
 
-			vertexPtr[index].position = D3DXVECTOR3((drawX + m_Font[letter].size), (drawY - 16), 0.0f);  // Bottom right.
-			vertexPtr[index].texture = D3DXVECTOR2(m_Font[letter].right, 1.0f);
+			vertexPtr[index].position = DirectX::XMFLOAT3((drawX + m_Font[letter].size), (drawY - 16), 0.0f);  // Bottom right.
+			vertexPtr[index].texture = DirectX::XMFLOAT2(m_Font[letter].right, 1.0f);
 			index++;
 
 			// Update the x location for drawing by the size of the letter and one pixel.

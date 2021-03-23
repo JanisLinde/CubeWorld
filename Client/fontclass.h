@@ -9,13 +9,14 @@
 // INCLUDES //
 //////////////
 #include <fstream>
+#include <DirectXMath.h>
 using namespace std;
 
 
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "textureclass.h"
+#include "TextureClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,26 +33,26 @@ private:
 
 	struct VertexType
 	{
-		D3DXVECTOR3 position;
-	    D3DXVECTOR2 texture;
+		DirectX::XMFLOAT3 position;
+	    DirectX::XMFLOAT2 texture;
 	};
 
 public:
 	FontClass();
-	FontClass(const FontClass&);
+	FontClass(const FontClass& opther);
 	~FontClass();
 
-	bool Initialize(ID3D10Device*, char*, WCHAR*);
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* fontFilename, char* textureFilename);
 	void Shutdown();
 
-	ID3D10ShaderResourceView* GetTexture();
+	ID3D11ShaderResourceView* GetTexture();
 
-	void BuildVertexArray(void*, char*, float, float);
+	void BuildVertexArray(void* vertices, char* sentence, float drawX, float drawY);
 
 private:
-	bool LoadFontData(char*);
+	bool LoadFontData(char* filename);
 	void ReleaseFontData();
-	bool LoadTexture(ID3D10Device*, WCHAR*);
+	bool LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename);
 	void ReleaseTexture();
 
 private:

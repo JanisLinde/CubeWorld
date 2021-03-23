@@ -8,8 +8,8 @@
 ///////////////////////
 // MY CLASS INCLUDES //
 ///////////////////////
-#include "d3dclass.h"
-#include "inputclass.h"
+#include "D3DClass.h"
+#include "InputClass.h"
 #include "cameraclass.h"
 #include "positionclass.h"
 #include "lightclass.h"

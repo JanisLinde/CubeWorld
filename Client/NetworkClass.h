@@ -29,7 +29,7 @@ const int MAX_QUEUE_SIZE = 200;
 ///////////////////////
 #include "NetworkMessages.h"
 #include "UserInterfaceClass.h"
-#include "blackforestclass.h"
+#include "BlackForestClass.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -48,7 +48,7 @@ private:
 
 public:
 	NetworkClass();
-	NetworkClass(const NetworkClass&);
+	NetworkClass(const NetworkClass& other);
 	~NetworkClass();
 
 	bool Initialize(char*, unsigned short);

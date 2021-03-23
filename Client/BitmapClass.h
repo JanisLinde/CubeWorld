@@ -29,7 +29,7 @@ public:
 	BitmapClass(const BitmapClass&);
 	~BitmapClass();
 
-	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, int screenWidth, int screenHeight, char* textureFilename, int bitmapWidth, int bitmapHeight, int locationX, int locationY);
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, int screenWidth, int screenHeight, const char* textureFilename, int bitmapWidth, int bitmapHeight, int locationX, int locationY);
 	void Shutdown();
 	bool Render(ID3D11DeviceContext* deviceContext, int positionX, int positionY);
 
@@ -44,7 +44,7 @@ private:
 	bool UpdateBuffers(ID3D11DeviceContext* deviceContext, int positionX, int positionY);
 	void RenderBuffers(ID3D11DeviceContext* deviceContext);
 
-	bool LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename);
+	bool LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const char* filename);
 	void ReleaseTexture();
 
 private:

@@ -8,8 +8,9 @@
 //////////////
 // INCLUDES //
 //////////////
-#include <d3d10.h>
-#include <d3dx10.h>
+#include <d3d11.h>
+#include <d3dcompiler.h>
+#include <DirectXMath.h>
 #include <fstream>
 using namespace std;
 
@@ -19,33 +20,48 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 class FontShaderClass
 {
+private:
+	struct MatrixBufferType
+	{
+		DirectX::XMMATRIX world;
+		DirectX::XMMATRIX view;
+		DirectX::XMMATRIX projection;
+	};
+
+	struct ColorBufferType
+	{
+		DirectX::XMFLOAT4 color;
+	};
+
 public:
 	FontShaderClass();
-	FontShaderClass(const FontShaderClass&);
+	FontShaderClass(const FontShaderClass& other);
 	~FontShaderClass();
 
-	bool Initialize(ID3D10Device*, HWND);
+	bool Initialize(ID3D11Device* device, HWND hwnd);
 	void Shutdown();
-	void Render(ID3D10Device*, int, D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, ID3D10ShaderResourceView*, D3DXVECTOR4);
+	void Render(ID3D11DeviceContext* deviceContext, int indexCount, DirectX::XMMATRIX worldMatrix,
+		DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix, ID3D11ShaderResourceView* texture,
+		DirectX::XMFLOAT4 pixelColor);
 
 private:
-	bool InitializeShader(ID3D10Device*, HWND, WCHAR*);
+	bool InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* filename);
 	void ShutdownShader();
 	void OutputShaderErrorMessage(ID3D10Blob*, HWND, WCHAR*);
 
-	void SetShaderParameters(D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, ID3D10ShaderResourceView*, D3DXVECTOR4);
-	void RenderShader(ID3D10Device*, int);
+	bool SetShaderParameters(ID3D11DeviceContext* deviceContext, DirectX::XMMATRIX worldMatrix,
+		DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix, ID3D11ShaderResourceView* texture,
+		DirectX::XMFLOAT4 pixelColor);
+	void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);
 
 private:
-	ID3D10Effect* m_effect;
-	ID3D10EffectTechnique* m_technique;
-	ID3D10InputLayout* m_layout;
+	ID3D11VertexShader* m_vertexShader;
+	ID3D11PixelShader* m_pixelShader;
+	ID3D11InputLayout* m_layout;
+	ID3D11Buffer* m_matrixBuffer;
+	ID3D11Buffer* m_colorBuffer;
+	ID3D11SamplerState* m_sampleState;
 
-	ID3D10EffectMatrixVariable* m_worldMatrixPtr;
-	ID3D10EffectMatrixVariable* m_viewMatrixPtr;
-	ID3D10EffectMatrixVariable* m_projectionMatrixPtr;
-	ID3D10EffectShaderResourceVariable* m_texturePtr;
-	ID3D10EffectVectorVariable* m_pixelColorPtr;
 };
 
 #endif

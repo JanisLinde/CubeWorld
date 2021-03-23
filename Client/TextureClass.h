@@ -32,13 +32,13 @@ public:
 	TextureClass(const TextureClass& other);
 	~TextureClass();
 
-	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename);
+	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const char* filename);
 	void Shutdown();
 
 	ID3D11ShaderResourceView* GetTexture();
 
 private:
-	bool LoadTarga(char* filename, int& height, int& width);
+	bool LoadTarga(const char* filename, int& height, int& width);
 
 private:
 	unsigned char* m_targaData = 0;

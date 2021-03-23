@@ -1,8 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Filename: textclass.cpp
 ///////////////////////////////////////////////////////////////////////////////
-#include "textclass.h"
-
+#include "TextClass.h"
 
 TextClass::TextClass()
 {
@@ -11,22 +10,18 @@ TextClass::TextClass()
 	m_sentenceArray = 0;
 }
 
-
 TextClass::TextClass(const TextClass& other)
 {
 }
-
 
 TextClass::~TextClass()
 {
 }
 
-
-bool TextClass::Initialize(ID3D10Device* device, HWND hwnd, int screenWidth, int screenHeight)
+bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, int screenWidth, int screenHeight)
 {
 	bool result;
 	int i;
-
 
 	// Store the screen width and height.
 	m_screenWidth = screenWidth;
@@ -40,7 +35,10 @@ bool TextClass::Initialize(ID3D10Device* device, HWND hwnd, int screenWidth, int
 	}
 
 	// Initialize the font object.
-	result = m_Font->Initialize(device, "../Engine/data/font/fontdata.txt", L"../Engine/data/font/font.dds");
+	char fontFilename[64] = "../Engine/data/font/fontdata.txt";
+	char textureFilename[64] = "../Engine/data/font/font.dds";
+
+	result = m_Font->Initialize(device, deviceContext, fontFilename, textureFilename);
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the font object.", L"Error", MB_OK);
@@ -77,7 +75,6 @@ bool TextClass::Initialize(ID3D10Device* device, HWND hwnd, int screenWidth, int
 
 	return true;
 }
-
 
 void TextClass::Shutdown()
 {
@@ -118,8 +115,7 @@ void TextClass::Shutdown()
 	return;
 }
 
-
-void TextClass::Render(ID3D10Device* device, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX orthoMatrix)
+void TextClass::Render(ID3D11DeviceContext* deviceContext, DirectX::XMMATRIX worldMatrix, DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX orthoMatrix)
 {
 	int i;
 
@@ -129,15 +125,14 @@ void TextClass::Render(ID3D10Device* device, D3DXMATRIX worldMatrix, D3DXMATRIX 
 	{
 		if(m_sentenceArray[i].active)
 		{
-			RenderSentence(device, i, worldMatrix, viewMatrix, orthoMatrix);
+			RenderSentence(deviceContext, i, worldMatrix, viewMatrix, orthoMatrix);
 		}
 	}
 
 	return;
 }
 
-
-bool TextClass::CreateSentence(ID3D10Device* device, int id, int maxLength, char* sentence, int posX, int posY, float red, float green, float blue)
+bool TextClass::CreateSentence(ID3D11Device* device, ID3D11DeviceContext* deviceContext, int id, int maxLength, char* sentence, int posX, int posY, float red, float green, float blue)
 {
 	bool result;
 
@@ -150,7 +145,7 @@ bool TextClass::CreateSentence(ID3D10Device* device, int id, int maxLength, char
 	}
 
 	// Now update the sentence vertex buffer with the new string information.
-	result = UpdateSentence(id, sentence, posX, posY, red, green, blue);
+	result = UpdateSentence(deviceContext, id, sentence, posX, posY, red, green, blue);
 	if(!result)
 	{
 		return false;
@@ -159,13 +154,12 @@ bool TextClass::CreateSentence(ID3D10Device* device, int id, int maxLength, char
 	return true;
 }
 
-
-bool TextClass::InitializeSentence(int sentenceId, int maxLength, ID3D10Device* device)
+bool TextClass::InitializeSentence(int sentenceId, int maxLength, ID3D11Device* device)
 {
 	VertexType* vertices;
 	unsigned long* indices;
-	D3D10_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
-    D3D10_SUBRESOURCE_DATA vertexData, indexData;
+	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
+    D3D11_SUBRESOURCE_DATA vertexData, indexData;
 	HRESULT result;
 	int i;
 
@@ -210,10 +204,10 @@ bool TextClass::InitializeSentence(int sentenceId, int maxLength, ID3D10Device* 
 	}
 
 	// Set up the description of the dynamic vertex buffer.
-    vertexBufferDesc.Usage = D3D10_USAGE_DYNAMIC;
+    vertexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
     vertexBufferDesc.ByteWidth = sizeof(VertexType) * m_sentenceArray[sentenceId].vertexCount;
-    vertexBufferDesc.BindFlags = D3D10_BIND_VERTEX_BUFFER;
-    vertexBufferDesc.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
+    vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+    vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
     vertexBufferDesc.MiscFlags = 0;
 
 	// Give the subresource structure a pointer to the vertex data.
@@ -227,9 +221,9 @@ bool TextClass::InitializeSentence(int sentenceId, int maxLength, ID3D10Device* 
 	}
 
 	// Set up the description of the static index buffer.
-    indexBufferDesc.Usage = D3D10_USAGE_DEFAULT;
+    indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
     indexBufferDesc.ByteWidth = sizeof(unsigned long) * m_sentenceArray[sentenceId].indexCount;
-    indexBufferDesc.BindFlags = D3D10_BIND_INDEX_BUFFER;
+    indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
     indexBufferDesc.CPUAccessFlags = 0;
     indexBufferDesc.MiscFlags = 0;
 
@@ -254,14 +248,14 @@ bool TextClass::InitializeSentence(int sentenceId, int maxLength, ID3D10Device* 
 	return true;
 }
 
-
-bool TextClass::UpdateSentence(int sentenceId, char* text, int positionX, int positionY, float red, float green, float blue)
+bool TextClass::UpdateSentence(ID3D11DeviceContext* deviceContext, int sentenceId, char* text, int positionX, int positionY, float red, float green, float blue)
 {
 	int numLetters;
 	VertexType* vertices;
 	float drawX, drawY;
 	void* verticesPtr;
 	HRESULT result;
+	D3D11_MAPPED_SUBRESOURCE mappedResource;
 
 
 	// Store the color of the sentence.
@@ -299,17 +293,19 @@ bool TextClass::UpdateSentence(int sentenceId, char* text, int positionX, int po
 	verticesPtr = 0;
 
 	// Lock the vertex buffer.
-	result = m_sentenceArray[sentenceId].vertexBuffer->Map(D3D10_MAP_WRITE_DISCARD, 0, (void**)&verticesPtr);
-	if(FAILED(result))
+	result = deviceContext->Map(m_sentenceArray[sentenceId].vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+	if (FAILED(result))
 	{
 		return false;
 	}
+
+	verticesPtr = (VertexType*)mappedResource.pData;
 
 	// Copy the vertex array into the vertex buffer.
 	memcpy(verticesPtr, (void*)vertices, (sizeof(VertexType) * m_sentenceArray[sentenceId].vertexCount));
 
 	// Unlock the vertex buffer.
-	m_sentenceArray[sentenceId].vertexBuffer->Unmap();
+	deviceContext->Unmap(m_sentenceArray[sentenceId].vertexBuffer, 0);
 
 	// Release the vertex array as it is no longer needed.
 	delete [] vertices;
@@ -317,7 +313,6 @@ bool TextClass::UpdateSentence(int sentenceId, char* text, int positionX, int po
 
 	return true;
 }
-
 
 void TextClass::ReleaseSentence(int sentenceId)
 {
@@ -338,11 +333,10 @@ void TextClass::ReleaseSentence(int sentenceId)
 	return;
 }
 
-
-void TextClass::RenderSentence(ID3D10Device* device, int sentenceId, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX orthoMatrix)
+void TextClass::RenderSentence(ID3D11DeviceContext* deviceContext, int sentenceId, DirectX::XMMATRIX worldMatrix, DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX orthoMatrix)
 {
 	unsigned int stride, offset;
-	D3DXVECTOR4 pixelColor;
+	DirectX::XMFLOAT4 pixelColor;
 
 
 	// Set vertex buffer stride and offset.
@@ -350,19 +344,19 @@ void TextClass::RenderSentence(ID3D10Device* device, int sentenceId, D3DXMATRIX 
 	offset = 0;
 
 	// Set the vertex buffer to active in the input assembler so it can be rendered.
-	device->IASetVertexBuffers(0, 1, &m_sentenceArray[sentenceId].vertexBuffer, &stride, &offset);
+	deviceContext->IASetVertexBuffers(0, 1, &m_sentenceArray[sentenceId].vertexBuffer, &stride, &offset);
 
     // Set the index buffer to active in the input assembler so it can be rendered.
-    device->IASetIndexBuffer(m_sentenceArray[sentenceId].indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+	deviceContext->IASetIndexBuffer(m_sentenceArray[sentenceId].indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
     // Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
-    device->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	deviceContext->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	// Create a pixel color vector with the input sentence color.
-	pixelColor = D3DXVECTOR4(m_sentenceArray[sentenceId].red, m_sentenceArray[sentenceId].green, m_sentenceArray[sentenceId].blue, 1.0f);
+	pixelColor = DirectX::XMFLOAT4(m_sentenceArray[sentenceId].red, m_sentenceArray[sentenceId].green, m_sentenceArray[sentenceId].blue, 1.0f);
 
 	// Render the text using the font shader.
-	m_FontShader->Render(device, m_sentenceArray[sentenceId].indexCount, worldMatrix, viewMatrix, orthoMatrix, m_Font->GetTexture(), pixelColor);
+	m_FontShader->Render(deviceContext, m_sentenceArray[sentenceId].indexCount, worldMatrix, viewMatrix, orthoMatrix, m_Font->GetTexture(), pixelColor);
 
 	return;
 }
