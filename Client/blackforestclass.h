@@ -18,9 +18,9 @@
 #include "TerrainClass.h"
 #include "TerrainShaderClass.h"
 #include "TextureShaderClass.h"
-#include "modelclass.h"
-#include "entitylistclass.h"
-#include "frustumclass.h"
+#include "ModelClass.h"
+#include "EntityListClass.h"
+#include "FrustumClass.h"
 #include "quadtreeclass.h"
 #include "UserInterfaceClass.h"
 
