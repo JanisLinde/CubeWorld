@@ -575,7 +575,6 @@ void NetworkClass::ProcessMessageQueue()
 	return;
 }
 
-
 void NetworkClass::HandleChatMessage(int queuePosition)
 {
 	MSG_CHAT_DATA* msg;
@@ -597,7 +596,6 @@ void NetworkClass::HandleChatMessage(int queuePosition)
 
 	return;
 }
-
 
 void NetworkClass::HandleEntityInfoMessage(int queuePosition)
 {

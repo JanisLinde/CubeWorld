@@ -27,28 +27,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="blackforestclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="cameraclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="cpuclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="D3DClass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="entitylistclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
-    <ClCompile Include="fpsclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="frustumclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="InputClass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="lightclass.cpp">
@@ -114,30 +99,30 @@
     <ClCompile Include="UserInterfaceClass.cpp">
       <Filter>Quelldateien\Done</Filter>
     </ClCompile>
+    <ClCompile Include="BlackForestClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="InputClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="blackforestclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="cameraclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="cpuclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="D3DClass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="entitylistclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
-    <ClInclude Include="fpsclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="frustumclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="InputClass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="lightclass.h">
@@ -201,6 +186,21 @@
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
     <ClInclude Include="UserInterfaceClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackForestClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="InputClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraClass.h">
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
   </ItemGroup>

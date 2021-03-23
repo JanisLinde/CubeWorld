@@ -141,14 +141,14 @@
   <ItemGroup>
     <ClCompile Include="ApplicationClass.cpp" />
     <ClCompile Include="BitmapClass.cpp" />
-    <ClCompile Include="blackforestclass.cpp" />
-    <ClCompile Include="cameraclass.cpp" />
+    <ClCompile Include="BlackForestClass.cpp" />
+    <ClCompile Include="CameraClass.cpp" />
     <ClCompile Include="cpuclass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
     <ClCompile Include="entitylistclass.cpp" />
     <ClCompile Include="FontClass.cpp" />
     <ClCompile Include="FontShaderClass.cpp" />
-    <ClCompile Include="fpsclass.cpp" />
+    <ClCompile Include="FPSClass.cpp" />
     <ClCompile Include="frustumclass.cpp" />
     <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="lightclass.cpp" />
@@ -172,14 +172,14 @@
   <ItemGroup>
     <ClInclude Include="ApplicationClass.h" />
     <ClInclude Include="BitmapClass.h" />
-    <ClInclude Include="blackforestclass.h" />
-    <ClInclude Include="cameraclass.h" />
+    <ClInclude Include="BlackForestClass.h" />
+    <ClInclude Include="CameraClass.h" />
     <ClInclude Include="cpuclass.h" />
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="entitylistclass.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="FontShaderClass.h" />
-    <ClInclude Include="fpsclass.h" />
+    <ClInclude Include="FPSClass.h" />
     <ClInclude Include="frustumclass.h" />
     <ClInclude Include="InputClass.h" />
     <ClInclude Include="lightclass.h" />
