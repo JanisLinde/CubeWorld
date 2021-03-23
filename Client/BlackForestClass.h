@@ -10,19 +10,19 @@
 ///////////////////////
 #include "D3DClass.h"
 #include "InputClass.h"
-#include "cameraclass.h"
-#include "positionclass.h"
-#include "lightclass.h"
-#include "skydomeclass.h"
-#include "skydomeshaderclass.h"
-#include "terrainclass.h"
+#include "CameraClass.h"
+#include "PositionClass.h"
+#include "LightClass.h"
+#include "SkydomeClass.h"
+#include "SkydomeShaderClass.h"
+#include "TerrainClass.h"
 #include "terrainshaderclass.h"
-#include "textureshaderclass.h"
+#include "TextureShaderClass.h"
 #include "modelclass.h"
 #include "entitylistclass.h"
 #include "frustumclass.h"
 #include "quadtreeclass.h"
-#include "userinterfaceclass.h"
+#include "UserInterfaceClass.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////

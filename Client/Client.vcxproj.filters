@@ -27,16 +27,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cpuclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="entitylistclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="frustumclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="lightclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="modelclass.cpp">
@@ -45,25 +39,10 @@
     <ClCompile Include="NetworkClass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
-    <ClCompile Include="positionclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="quadtreeclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
-    <ClCompile Include="skydomeclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="skydomeshaderclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="stateclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
     <ClCompile Include="terrainclass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="timerclass.cpp">
       <Filter>Quelldateien\ToDo</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -114,18 +93,33 @@
     <ClCompile Include="CameraClass.cpp">
       <Filter>Quelldateien\Done</Filter>
     </ClCompile>
+    <ClCompile Include="CPUClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="LightClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="SkydomeClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="SkydomeShaderClass.cpp">
+      <Filter>Quelldateien\ToDo</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerClass.cpp">
+      <Filter>Quelldateien\Done</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cpuclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="entitylistclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="frustumclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="lightclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="modelclass.h">
@@ -134,28 +128,13 @@
     <ClInclude Include="NetworkClass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
-    <ClInclude Include="positionclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
     <ClInclude Include="quadtreeclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="skydomeclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="skydomeshaderclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="stateclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="terrainclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="terrainshaderclass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="timerclass.h">
       <Filter>Headerdateien\ToDo</Filter>
     </ClInclude>
     <ClInclude Include="ApplicationClass.h">
@@ -201,6 +180,27 @@
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
     <ClInclude Include="CameraClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="CPUClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="LightClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="SkydomeClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="SkydomeShaderClass.h">
+      <Filter>Headerdateien\ToDo</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClass.h">
+      <Filter>Headerdateien\Done</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerClass.h">
       <Filter>Headerdateien\Done</Filter>
     </ClInclude>
   </ItemGroup>

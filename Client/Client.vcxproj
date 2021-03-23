@@ -143,7 +143,7 @@
     <ClCompile Include="BitmapClass.cpp" />
     <ClCompile Include="BlackForestClass.cpp" />
     <ClCompile Include="CameraClass.cpp" />
-    <ClCompile Include="cpuclass.cpp" />
+    <ClCompile Include="CPUClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
     <ClCompile Include="entitylistclass.cpp" />
     <ClCompile Include="FontClass.cpp" />
@@ -151,22 +151,22 @@
     <ClCompile Include="FPSClass.cpp" />
     <ClCompile Include="frustumclass.cpp" />
     <ClCompile Include="InputClass.cpp" />
-    <ClCompile Include="lightclass.cpp" />
+    <ClCompile Include="LightClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="modelclass.cpp" />
     <ClCompile Include="NetworkClass.cpp" />
-    <ClCompile Include="positionclass.cpp" />
+    <ClCompile Include="PositionClass.cpp" />
     <ClCompile Include="quadtreeclass.cpp" />
-    <ClCompile Include="skydomeclass.cpp" />
-    <ClCompile Include="skydomeshaderclass.cpp" />
-    <ClCompile Include="stateclass.cpp" />
+    <ClCompile Include="SkydomeClass.cpp" />
+    <ClCompile Include="SkydomeShaderClass.cpp" />
+    <ClCompile Include="StateClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="terrainclass.cpp" />
     <ClCompile Include="terrainshaderclass.cpp" />
     <ClCompile Include="TextClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
     <ClCompile Include="TextureShaderClass.cpp" />
-    <ClCompile Include="timerclass.cpp" />
+    <ClCompile Include="TimerClass.cpp" />
     <ClCompile Include="UserInterfaceClass.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,7 +174,7 @@
     <ClInclude Include="BitmapClass.h" />
     <ClInclude Include="BlackForestClass.h" />
     <ClInclude Include="CameraClass.h" />
-    <ClInclude Include="cpuclass.h" />
+    <ClInclude Include="CPUClass.h" />
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="entitylistclass.h" />
     <ClInclude Include="FontClass.h" />
@@ -182,22 +182,22 @@
     <ClInclude Include="FPSClass.h" />
     <ClInclude Include="frustumclass.h" />
     <ClInclude Include="InputClass.h" />
-    <ClInclude Include="lightclass.h" />
+    <ClInclude Include="LightClass.h" />
     <ClInclude Include="modelclass.h" />
     <ClInclude Include="NetworkClass.h" />
     <ClInclude Include="NetworkMessages.h" />
-    <ClInclude Include="positionclass.h" />
+    <ClInclude Include="PositionClass.h" />
     <ClInclude Include="quadtreeclass.h" />
-    <ClInclude Include="skydomeclass.h" />
-    <ClInclude Include="skydomeshaderclass.h" />
-    <ClInclude Include="stateclass.h" />
+    <ClInclude Include="SkydomeClass.h" />
+    <ClInclude Include="SkydomeShaderClass.h" />
+    <ClInclude Include="StateClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="terrainclass.h" />
     <ClInclude Include="terrainshaderclass.h" />
     <ClInclude Include="TextClass.h" />
     <ClInclude Include="TextureClass.h" />
     <ClInclude Include="TextureShaderClass.h" />
-    <ClInclude Include="timerclass.h" />
+    <ClInclude Include="TimerClass.h" />
     <ClInclude Include="UserInterfaceClass.h" />
   </ItemGroup>
   <ItemGroup>
