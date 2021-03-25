@@ -161,7 +161,6 @@ bool ApplicationClass::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidt
 	return true;
 }
 
-
 void ApplicationClass::Shutdown()
 {
 	// Release the black forest object.
@@ -235,7 +234,6 @@ void ApplicationClass::Shutdown()
 
 	return;
 }
-
 
 bool ApplicationClass::Frame()
 {

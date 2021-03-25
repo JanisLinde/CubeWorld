@@ -24,7 +24,7 @@ bool TextureShaderClass::Initialize(ID3D11Device* device, HWND hwnd)
 {
 	bool result;
 
-	WCHAR vs[] = L"texture.hlsl";
+	WCHAR vs[] = L"data/shader/texture.hlsl";
 
 	// Initialize the shader that will be used to draw the triangle.
 	result = InitializeShader(device, hwnd, vs);

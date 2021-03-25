@@ -110,7 +110,7 @@ bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth
 	}
 
 	// Initialize the terrain object.
-	result = m_Terrain->Initialize("data/blackforest_hm.tga", "data/blackforest_cm.tga", 12.5f);
+	result = m_Terrain->Initialize("data/blackforest_hm.bmp", "data/blackforest_cm.bmp", 12.5f);
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the terrain object.", L"Error", MB_OK);
@@ -155,7 +155,7 @@ bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth
 	}
 
 	// Initialize the model object.
-	result = m_CubeModel1->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), "../Engine/data/cube.txt", "../Engine/data/char1.dds");
+	result = m_CubeModel1->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), "data/cube.txt", "data/char1.tga");
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
@@ -170,7 +170,7 @@ bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth
 	}
 
 	// Initialize the model object.
-	result = m_CubeModel2->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), "../Engine/data/cube.txt", "../Engine/data/char2.dds");
+	result = m_CubeModel2->Initialize(Direct3D->GetDevice(), Direct3D->GetDeviceContext(), "data/cube.txt", "data/char2.tga");
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the secpmd model object.", L"Error", MB_OK);
@@ -458,17 +458,17 @@ bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterf
 
 	// Clear the scene.
 	Direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
-
+	
 	// Generate the view matrix based on the camera's position.
 	m_Camera->Render();
-
+	
 	// Get the world, view, and projection matrices from the camera and d3d objects.
 	Direct3D->GetWorldMatrix(worldMatrix);
 	m_Camera->GetViewMatrix(viewMatrix);
 	Direct3D->GetProjectionMatrix(projectionMatrix);
 	Direct3D->GetOrthoMatrix(orthoMatrix);
 	m_Camera->GetBaseViewMatrix(baseViewMatrix);
-
+	
 	// Construct the frustum.
 	m_Frustum->ConstructFrustum(m_screenDepth, projectionMatrix, viewMatrix);
 
@@ -551,7 +551,7 @@ bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterf
 	// Turn off the Z buffer and enable alpha blending to begin all 2D rendering.
 	Direct3D->TurnZBufferOff();
 	Direct3D->EnableAlphaBlending();
-
+	
 	// Render the user interface.
 	result = UserInterface->Render(Direct3D, m_TextureShader, worldMatrix, baseViewMatrix, orthoMatrix);
 	if(!result)

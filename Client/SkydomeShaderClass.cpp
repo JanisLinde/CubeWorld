@@ -24,7 +24,7 @@ bool SkyDomeShaderClass::Initialize(ID3D11Device* device, HWND hwnd)
 {
 	bool result;
 
-	WCHAR file[] = L"skydome.hlsl";
+	WCHAR file[] = L"data/shader/skydome.hlsl";
 
 	// Initialize the shader that will be used to draw the triangles.
 	result = InitializeShader(device, hwnd, file);
@@ -75,7 +75,7 @@ bool SkyDomeShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR
 	pixelShaderBuffer = 0;
 
 	// Compile the vertex shader code.
-	result = D3DCompileFromFile(filename, NULL, NULL, "TextureVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
+	result = D3DCompileFromFile(filename, NULL, NULL, "SkyDomeVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
 		&vertexShaderBuffer, &errorMessage);
 	if (FAILED(result))
 	{
@@ -94,7 +94,7 @@ bool SkyDomeShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR
 	}
 
 	// Compile the pixel shader code.
-	result = D3DCompileFromFile(filename, NULL, NULL, "TexturePixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
+	result = D3DCompileFromFile(filename, NULL, NULL, "SkyDomePixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
 		&pixelShaderBuffer, &errorMessage);
 	if (FAILED(result))
 	{

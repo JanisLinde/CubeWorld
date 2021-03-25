@@ -25,7 +25,7 @@ bool FontShaderClass::Initialize(ID3D11Device* device, HWND hwnd)
 {
 	bool result;
 
-	WCHAR file[] = L"font.hlsl";
+	WCHAR file[] = L"data/shader/font.hlsl";
 
 	// Initialize the shader that will be used to draw the triangle.
 	result = InitializeShader(device, hwnd, file);
@@ -77,7 +77,7 @@ bool FontShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* f
 	pixelShaderBuffer = 0;
 
 	// Compile the vertex shader code.
-	result = D3DCompileFromFile(filename, NULL, NULL, "TextureVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
+	result = D3DCompileFromFile(filename, NULL, NULL, "FontVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
 		&vertexShaderBuffer, &errorMessage);
 	if (FAILED(result))
 	{
@@ -96,7 +96,7 @@ bool FontShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* f
 	}
 
 	// Compile the pixel shader code.
-	result = D3DCompileFromFile(filename, NULL, NULL, "TexturePixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
+	result = D3DCompileFromFile(filename, NULL, NULL, "FontPixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0,
 		&pixelShaderBuffer, &errorMessage);
 	if (FAILED(result))
 	{

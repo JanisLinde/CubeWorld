@@ -32,6 +32,7 @@ private:
 	{
 		DirectX::XMFLOAT4 diffuseColor;
 		DirectX::XMFLOAT3 direction;
+		float pad;
 	};
 
 public:

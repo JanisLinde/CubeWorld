@@ -132,7 +132,7 @@ void CameraClass::GenerateBaseViewMatrix()
 	lookAt = DirectX::XMVectorAdd(position, lookAt);
 
 	// Finally create the view matrix from the three updated vectors.
-	m_viewMatrix = DirectX::XMMatrixLookAtLH(position, lookAt, up);
+	m_baseViewMatrix = DirectX::XMMatrixLookAtLH(position, lookAt, up);
 
 	return;
 }

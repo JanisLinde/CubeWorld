@@ -13,195 +13,183 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Headerdateien\ToDo">
-      <UniqueIdentifier>{e536c913-9a48-4985-9aa1-f1b8d7b6060f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\Done">
-      <UniqueIdentifier>{c02791e7-e72f-4851-94cb-a6b4a0480ddc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\Done">
-      <UniqueIdentifier>{283594f1-f575-4b79-a4df-39120d504f4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\ToDo">
-      <UniqueIdentifier>{07c7c44c-bc1a-45f4-a82f-dcd33052bcd1}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NetworkClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="ApplicationClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureShaderClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
     <ClCompile Include="BitmapClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="FontShaderClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="FontClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="TextClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="UserInterfaceClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackForestClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
-    </ClCompile>
-    <ClCompile Include="D3DClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="InputClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="CameraClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="CPUClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="PositionClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="LightClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="SkydomeClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="StateClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="TimerClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="SkydomeShaderClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="TerrainClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="TerrainShaderClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
+    <ClCompile Include="D3DClass.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="EntityListClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
+      <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="FrustumClass.cpp">
-      <Filter>Quelldateien\ToDo</Filter>
+    <ClCompile Include="FontClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="FontShaderClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="InputClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="LightClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionClass.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="QuadTreeClass.cpp">
-      <Filter>Quelldateien\Done</Filter>
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="SkydomeClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="SkydomeShaderClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainShaderClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TextClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShaderClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterfaceClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ApplicationClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackForestClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="FrustumClass.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkClass.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NetworkClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="ApplicationClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="SystemClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="NetworkMessages.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureShaderClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
     <ClInclude Include="BitmapClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="FontShaderClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="FontClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="TextClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInterfaceClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackForestClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
-    </ClInclude>
-    <ClInclude Include="D3DClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="InputClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSClass.h">
-      <Filter>Headerdateien\Done</Filter>
+      <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="CameraClass.h">
-      <Filter>Headerdateien\Done</Filter>
+      <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="CPUClass.h">
-      <Filter>Headerdateien\Done</Filter>
+      <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="PositionClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="LightClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="SkydomeClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="StateClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="SkydomeShaderClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="TerrainClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="TerrainShaderClass.h">
-      <Filter>Headerdateien\Done</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelClass.h">
-      <Filter>Headerdateien\Done</Filter>
+    <ClInclude Include="D3DClass.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="EntityListClass.h">
-      <Filter>Headerdateien\Done</Filter>
+      <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="FrustumClass.h">
-      <Filter>Headerdateien\ToDo</Filter>
+    <ClInclude Include="FontClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="FontShaderClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="InputClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="LightClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkMessages.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionClass.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="QuadTreeClass.h">
-      <Filter>Headerdateien\Done</Filter>
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="SkydomeClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="SkydomeShaderClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainShaderClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TextClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShaderClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterfaceClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ApplicationClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackForestClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="FrustumClass.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkClass.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -222,5 +210,19 @@
     <None Include="texture.fx">
       <Filter>Ressourcendateien</Filter>
     </None>
+    <None Include="data\shader\font.hlsl">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="data\shader\skydome.hlsl">
+      <Filter>Ressourcendateien</Filter>
+    </FxCompile>
+    <FxCompile Include="data\shader\terrain.hlsl">
+      <Filter>Ressourcendateien</Filter>
+    </FxCompile>
+    <FxCompile Include="data\shader\texture.hlsl">
+      <Filter>Ressourcendateien</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
