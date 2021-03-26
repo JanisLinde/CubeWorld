@@ -1,7 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Filename: networkclass.cpp
 ///////////////////////////////////////////////////////////////////////////////
-#include "NetworkClass.h"
+#include "../include/NetworkClass.h"
+
+#include <fstream>
 
 NetworkClass::NetworkClass()
 {
@@ -11,16 +13,32 @@ NetworkClass::NetworkClass()
 	m_UserInterfacePtr = 0;
 }
 
-
 NetworkClass::NetworkClass(const NetworkClass& other)
 {
 }
-
 
 NetworkClass::~NetworkClass()
 {
 }
 
+bool NetworkClass::Initialize()
+{
+	std::ifstream file("server.cfg");
+	if (!file.good())
+		return false;
+
+	std::string serverAddress;
+	file >> serverAddress;
+
+	file.close();
+
+	if (serverAddress.empty())
+		return false;
+
+	char* serverAddressStr = &serverAddress[0];
+
+	return Initialize(serverAddressStr, DEFAULT_PORT);
+}
 
 bool NetworkClass::Initialize(char* ipAddress, unsigned short serverPort)
 {
@@ -67,7 +85,6 @@ bool NetworkClass::Initialize(char* ipAddress, unsigned short serverPort)
 	return true;
 }
 
-
 void NetworkClass::Shutdown()
 {
 	// Send a message to the server letting it know this client is disconnecting.
@@ -102,7 +119,6 @@ void NetworkClass::Shutdown()
 	return;
 }
 
-
 void NetworkClass::Frame()
 {
 	bool newMessage;
@@ -124,13 +140,11 @@ void NetworkClass::Frame()
 	return;
 }
 
-
 void NetworkClass::SetZonePointer(BlackForestClass* ptr)
 {
 	m_ZonePtr = ptr;
 	return;
 }
-
 
 void NetworkClass::SetUIPointer(UserInterfaceClass* ptr)
 {
@@ -138,12 +152,10 @@ void NetworkClass::SetUIPointer(UserInterfaceClass* ptr)
 	return;
 }
 
-
 int NetworkClass::GetLatency()
 {
 	return m_latency;
 }
-
 
 bool NetworkClass::InitializeWinSock()
 {
@@ -199,13 +211,11 @@ bool NetworkClass::InitializeWinSock()
 	return true;
 }
 
-
 void NetworkClass::ShutdownWinsock()
 {
 	WSACleanup();
 	return;
 }
-
 
 bool NetworkClass::ConnectToServer(char* ipAddress, unsigned short portNumber)
 {
@@ -317,7 +327,6 @@ bool NetworkClass::ConnectToServer(char* ipAddress, unsigned short portNumber)
 	return true;
 }
 
-
 void NetworkReadFunction(void* ptr)
 {
 	NetworkClass* networkClassPtr;
@@ -356,13 +365,11 @@ void NetworkReadFunction(void* ptr)
 	return;
 }
 
-
 void NetworkClass::SetThreadActive()
 {
 	m_threadActive = true;
 	return;
 }
-
 
 void NetworkClass::SetThreadInactive()
 {
@@ -370,18 +377,15 @@ void NetworkClass::SetThreadInactive()
 	return;
 }
 
-
 bool NetworkClass::Online()
 {
 	return m_online;
 }
 
-
 SOCKET NetworkClass::GetClientSocket()
 {
 	return m_clientSocket;
 }
-
 
 void NetworkClass::ReadNetworkMessage(char* recvBuffer, int bytesRead, struct sockaddr_in serverAddress)
 {
@@ -412,13 +416,11 @@ void NetworkClass::ReadNetworkMessage(char* recvBuffer, int bytesRead, struct so
 	return;
 }
 
-
 void NetworkClass::HandlePingMessage()
 {
 	m_latency = timeGetTime() - m_pingTime;
 	return;
 }
-
 
 void NetworkClass::ProcessLatency()
 {
@@ -431,7 +433,6 @@ void NetworkClass::ProcessLatency()
 
 	return;
 }
-
 
 void NetworkClass::SendPing()
 {
@@ -454,7 +455,6 @@ void NetworkClass::SendPing()
 	return;
 }
 
-
 void NetworkClass::SendDisconnectMessage()
 {
 	MSG_DISCONNECT_DATA message;
@@ -475,7 +475,6 @@ void NetworkClass::SendDisconnectMessage()
 
 	return;
 }
-
 
 void NetworkClass::AddMessageToQueue(char* message, int messageSize, struct sockaddr_in serverAddress)
 {
@@ -504,7 +503,6 @@ void NetworkClass::AddMessageToQueue(char* message, int messageSize, struct sock
 
 	return;
 }
-
 
 void NetworkClass::ProcessMessageQueue()
 {
@@ -629,7 +627,6 @@ void NetworkClass::HandleEntityInfoMessage(int queuePosition)
 	return;
 }
 
-
 void NetworkClass::HandleNewUserLoginMessage(int queuePosition)
 {
 	MSG_ENTITY_INFO_DATA* message;
@@ -663,7 +660,6 @@ void NetworkClass::HandleNewUserLoginMessage(int queuePosition)
 	return;
 }
 
-
 void NetworkClass::HandleUserDisconnectMessage(int queuePosition)
 {
 	MSG_USER_DISCONNECT_DATA* message;
@@ -686,7 +682,6 @@ void NetworkClass::HandleUserDisconnectMessage(int queuePosition)
 
 	return;
 }
-
 
 void NetworkClass::HandleStateChangeMessage(int queuePosition)
 {
@@ -712,7 +707,6 @@ void NetworkClass::HandleStateChangeMessage(int queuePosition)
 	
 	return;
 }
-
 
 void NetworkClass::HandlePositionMessage(int queuePosition)
 {
@@ -744,7 +738,6 @@ void NetworkClass::HandlePositionMessage(int queuePosition)
 	return;
 }
 
-
 void NetworkClass::HandleAIRotateMessage(int queuePosition)
 {
 	MSG_AI_ROTATE_DATA* message;
@@ -769,7 +762,6 @@ void NetworkClass::HandleAIRotateMessage(int queuePosition)
 	return;
 }
 
-
 bool NetworkClass::SendChatMessage(char* inputMsg)
 {
 	MSG_CHAT_DATA message;
@@ -792,7 +784,6 @@ bool NetworkClass::SendChatMessage(char* inputMsg)
 	return true;
 }
 
-
 bool NetworkClass::RequestEntityList()
 {
 	MSG_SIMPLE_DATA message;
@@ -814,7 +805,6 @@ bool NetworkClass::RequestEntityList()
 	return true;
 }
 
-
 bool NetworkClass::SendStateChange(char state)
 {
 	MSG_STATE_CHANGE_DATA message;
@@ -835,7 +825,6 @@ bool NetworkClass::SendStateChange(char state)
 
 	return true;
 }
-
 
 bool NetworkClass::SendPositionUpdate(float positionX, float positionY, float positionZ, float rotationX, float rotationY, float rotationZ)
 {

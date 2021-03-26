@@ -1,8 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: applicationclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "ApplicationClass.h"
-
+#include "../include/ApplicationClass.h"
 
 ApplicationClass::ApplicationClass()
 {
@@ -19,16 +18,13 @@ ApplicationClass::ApplicationClass()
 	m_BlackForest = 0;
 }
 
-
 ApplicationClass::ApplicationClass(const ApplicationClass& other)
 {
 }
 
-
 ApplicationClass::~ApplicationClass()
 {
 }
-
 
 bool ApplicationClass::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidth, int screenHeight)
 {
@@ -151,7 +147,8 @@ bool ApplicationClass::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidt
 	char ip[] = "192.168.1.138";
 
 	// Initialize the network object.
-	result = m_Network->Initialize(ip, 7000);
+	// result = m_Network->Initialize(ip, 7000);
+	result = m_Network->Initialize();
 	if(!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the network.", L"Error", MB_OK);

@@ -1,8 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: blackforestclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "blackforestclass.h"
-
+#include "../include/BlackForestClass.h"
 
 BlackForestClass::BlackForestClass()
 {
@@ -21,16 +20,13 @@ BlackForestClass::BlackForestClass()
 	m_QuadTree = 0;
 }
 
-
 BlackForestClass::BlackForestClass(const BlackForestClass& other)
 {
 }
 
-
 BlackForestClass::~BlackForestClass()
 {
 }
-
 
 bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth, int screenHeight, float screenDepth, float screenNear)
 {
@@ -223,7 +219,6 @@ bool BlackForestClass::Initialize(D3DClass* Direct3D, HWND hwnd, int screenWidth
 	return true;
 }
 
-
 void BlackForestClass::Shutdown()
 {
 	// Release the quad tree object.
@@ -326,7 +321,6 @@ void BlackForestClass::Shutdown()
 	return;
 }
 
-
 bool BlackForestClass::Frame(D3DClass* Direct3D, InputClass* Input, float frameTime, UserInterfaceClass* UserInterface)
 {
 	bool result;
@@ -361,7 +355,6 @@ bool BlackForestClass::Frame(D3DClass* Direct3D, InputClass* Input, float frameT
 
 	return true;
 }
-
 
 void BlackForestClass::HandleMovementInput(InputClass* Input, float frameTime)
 {
@@ -434,7 +427,6 @@ void BlackForestClass::HandleMovementInput(InputClass* Input, float frameTime)
 
 	return;
 }
-
 
 bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterface)
 {
@@ -569,7 +561,6 @@ bool BlackForestClass::Render(D3DClass* Direct3D, UserInterfaceClass* UserInterf
 	return true;
 }
 
-
 void BlackForestClass::AddEntity(unsigned short entityId, char entityType, float positionX, float positionY, float positionZ, float rotationX, float rotationY, float rotationZ)
 {
 	int i;
@@ -599,7 +590,6 @@ void BlackForestClass::AddEntity(unsigned short entityId, char entityType, float
 	return;
 }
 
-
 void BlackForestClass::RemoveEntity(unsigned short entityId)
 {
 	int i;
@@ -624,7 +614,6 @@ void BlackForestClass::RemoveEntity(unsigned short entityId)
 	return;
 }
 
-
 bool BlackForestClass::GetStateChange(char& state)
 {
 	// Determine if there was a state change based on the movement input of the client.
@@ -639,7 +628,6 @@ bool BlackForestClass::GetStateChange(char& state)
 		return false;
 	}
 }
-
 
 void BlackForestClass::UpdateEntityState(unsigned short entityId, char state)
 {
@@ -668,7 +656,6 @@ void BlackForestClass::UpdateEntityState(unsigned short entityId, char state)
 	return;
 }
 
-
 bool BlackForestClass::PositionUpdate(float& posX, float& posY, float& posZ, float& rotX, float& rotY, float& rotZ)
 {
 	// Check if it is time to send the server an update of our position in the zone.
@@ -685,7 +672,6 @@ bool BlackForestClass::PositionUpdate(float& posX, float& posY, float& posZ, flo
 		return false;
 	}
 }
-
 
 void BlackForestClass::UpdateEntityPosition(unsigned short entityId, float positionX, float positionY, float positionZ, float rotationX, float rotationY, float rotationZ)
 {
@@ -713,7 +699,6 @@ void BlackForestClass::UpdateEntityPosition(unsigned short entityId, float posit
 
 	return;
 }
-
 
 void BlackForestClass::UpdateEntityRotate(unsigned short entityId, bool rotate)
 {

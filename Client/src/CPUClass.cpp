@@ -1,23 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Filename: cpuclass.cpp
 ///////////////////////////////////////////////////////////////////////////////
-#include "cpuclass.h"
-
+#include "../include/CPUClass.h"
 
 CpuClass::CpuClass()
 {
 }
 
-
 CpuClass::CpuClass(const CpuClass& other)
 {
 }
 
-
 CpuClass::~CpuClass()
 {
 }
-
 
 void CpuClass::Initialize()
 {
@@ -48,7 +44,6 @@ void CpuClass::Initialize()
 	return;
 }
 
-
 void CpuClass::Shutdown()
 {
 	if(m_canReadCpu)
@@ -58,7 +53,6 @@ void CpuClass::Shutdown()
 
 	return;
 }
-
 
 void CpuClass::Frame()
 {
@@ -80,7 +74,6 @@ void CpuClass::Frame()
 
 	return;
 }
-
 
 int CpuClass::GetCpuPercentage()
 {

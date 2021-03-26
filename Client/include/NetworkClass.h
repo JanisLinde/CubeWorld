@@ -11,6 +11,7 @@
 const int MAX_MESSAGE_SIZE = 512;
 const int MAX_QUEUE_SIZE = 200;
 
+const int DEFAULT_PORT = 7000;
 
 /////////////
 // LINKING //
@@ -51,44 +52,45 @@ public:
 	NetworkClass(const NetworkClass& other);
 	~NetworkClass();
 
-	bool Initialize(char*, unsigned short);
+	bool Initialize();
+	bool Initialize(char* ipAddress, unsigned short serverPort);
 	void Shutdown();
 	void Frame();
 
-	void SetZonePointer(BlackForestClass*);
-	void SetUIPointer(UserInterfaceClass*);
+	void SetZonePointer(BlackForestClass* ptr);
+	void SetUIPointer(UserInterfaceClass* ptr);
 	int GetLatency();
 	void SetThreadActive();
 	void SetThreadInactive();
 	bool Online();
 	SOCKET GetClientSocket();
 
-	void ReadNetworkMessage(char*, int, struct sockaddr_in);
+	void ReadNetworkMessage(char* recvBuffer, int bytesRead, struct sockaddr_in serverAddress);
 
-	bool SendStateChange(char);
-	bool SendPositionUpdate(float, float, float, float, float, float);
+	bool SendStateChange(char state);
+	bool SendPositionUpdate(float positionX, float positionY, float positionZ, float rotationX, float rotationY, float rotationZ);
 
 private:
 	bool InitializeWinSock();
 	void ShutdownWinsock();
 
-	bool ConnectToServer(char*, unsigned short);
+	bool ConnectToServer(char* ipAddress, unsigned short portNumber);
 	void HandlePingMessage();
 	void ProcessLatency();
 	void SendPing();
 	void SendDisconnectMessage();
 
-	void AddMessageToQueue(char*, int, struct sockaddr_in);
+	void AddMessageToQueue(char* message, int messageSize, struct sockaddr_in serverAddress);
 	void ProcessMessageQueue();
-	void HandleChatMessage(int);
-	void HandleEntityInfoMessage(int);
-	void HandleNewUserLoginMessage(int);
-	void HandleUserDisconnectMessage(int);
-	void HandleStateChangeMessage(int);
-	void HandlePositionMessage(int);
-	void HandleAIRotateMessage(int);
+	void HandleChatMessage(int queuePosition);
+	void HandleEntityInfoMessage(int queuePosition);
+	void HandleNewUserLoginMessage(int queuePosition);
+	void HandleUserDisconnectMessage(int queuePosition);
+	void HandleStateChangeMessage(int queuePosition);
+	void HandlePositionMessage(int queuePosition);
+	void HandleAIRotateMessage(int queuePosition);
 
-	bool SendChatMessage(char*);
+	bool SendChatMessage(char* inputMsg);
 	bool RequestEntityList();
 
 private:
@@ -111,7 +113,7 @@ private:
 /////////////////////////
 // FUNCTION PROTOTYPES //
 /////////////////////////
-void NetworkReadFunction(void*);
+void NetworkReadFunction(void* ptr);
 
 
 #endif
