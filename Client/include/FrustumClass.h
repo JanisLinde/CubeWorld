@@ -29,7 +29,10 @@ public:
 	bool CheckRectangle(float, float, float, float, float, float);
 
 private:
-	DirectX::XMVECTOR m_planes[6];
+	float DistancePointToPlane(DirectX::XMFLOAT4 plane, float px, float py, float pz);
+
+private:
+	DirectX::XMFLOAT4 m_planes[6];
 };
 
 #endif

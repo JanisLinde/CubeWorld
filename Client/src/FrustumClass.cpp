@@ -3,21 +3,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include "../include/FrustumClass.h"
 
-
 FrustumClass::FrustumClass()
 {
 }
-
 
 FrustumClass::FrustumClass(const FrustumClass& other)
 {
 }
 
-
 FrustumClass::~FrustumClass()
 {
 }
-
 
 void FrustumClass::ConstructFrustum(float screenDepth, DirectX::XMMATRIX projectionMatrix, DirectX::XMMATRIX viewMatrix)
 {
@@ -45,200 +41,140 @@ void FrustumClass::ConstructFrustum(float screenDepth, DirectX::XMMATRIX project
 	DirectX::XMFLOAT4 plane;
 
 	// Calculate near plane of frustum.
-	plane.x = m._14 + m._13;
-	plane.y = m._24 + m._23;
-	plane.z = m._34 + m._33;
-	plane.w = m._44 + m._43;
-	m_planes[0] = DirectX::XMPlaneNormalize(DirectX::XMLoadFloat4(&plane));
+	m_planes[0].x = m._14 + m._13;
+	m_planes[0].y = m._24 + m._23;
+	m_planes[0].z = m._34 + m._33;
+	m_planes[0].w = m._44 + m._43;
 
 	// Calculate far plane of frustum.
-	plane.x = m._14 - m._13;
-	plane.y = m._24 - m._23;
-	plane.z = m._34 - m._33;
-	plane.w = m._44 - m._43;
-	m_planes[1] = DirectX::XMPlaneNormalize(DirectX::XMLoadFloat4(&plane));
+	m_planes[1].x = m._14 - m._13;
+	m_planes[1].y = m._24 - m._23;
+	m_planes[1].z = m._34 - m._33;
+	m_planes[1].w = m._44 - m._43;
 
 	// Calculate left plane of frustum.
-	plane.x = m._14 + m._11;
-	plane.y = m._24 + m._21;
-	plane.z = m._34 + m._31;
-	plane.w = m._44 + m._41;
-	m_planes[2] = DirectX::XMPlaneNormalize(DirectX::XMLoadFloat4(&plane));
+	m_planes[2].x = m._14 + m._11;
+	m_planes[2].y = m._24 + m._21;
+	m_planes[2].z = m._34 + m._31;
+	m_planes[2].w = m._44 + m._41;
 
 	// Calculate right plane of frustum.
-	plane.x = m._14 - m._11;
-	plane.y = m._24 - m._21;
-	plane.z = m._34 - m._31;
-	plane.w = m._44 - m._41;
-	m_planes[3] = DirectX::XMPlaneNormalize(DirectX::XMLoadFloat4(&plane));
-
+	m_planes[3].x = m._14 - m._11;
+	m_planes[3].y = m._24 - m._21;
+	m_planes[3].z = m._34 - m._31;
+	m_planes[3].w = m._44 - m._41;
+	
 	// Calculate top plane of frustum.
-	plane.x = m._14 - m._12;
-	plane.y = m._24 - m._22;
-	plane.z = m._34 - m._32;
-	plane.w = m._44 - m._42;
-	m_planes[4] = DirectX::XMPlaneNormalize(DirectX::XMLoadFloat4(&plane));
+	m_planes[4].x = m._14 - m._12;
+	m_planes[4].y = m._24 - m._22;
+	m_planes[4].z = m._34 - m._32;
+	m_planes[4].w = m._44 - m._42;
 
 	// Calculate bottom plane of frustum.
-	plane.x = m._14 + m._12;
-	plane.y = m._24 + m._22;
-	plane.z = m._34 + m._32;
-	plane.w = m._44 + m._42;
-	m_planes[5] = DirectX::XMPlaneNormalize(DirectX::XMLoadFloat4(&plane));
+	m_planes[5].x = m._14 + m._12;
+	m_planes[5].y = m._24 + m._22;
+	m_planes[5].z = m._34 + m._32;
+	m_planes[5].w = m._44 + m._42;
 
 	return;
 }
 
 bool FrustumClass::CheckPoint(float x, float y, float z)
 {
-	/*
-	int i;
-
-	// Check if the point is inside all six planes of the view frustum.
-	for(i=0; i<6; i++) 
+	// Chck if the point is inside all six planes of the view frustum
+	for (int i = 0; i < 6; i++)
 	{
-		DirectX::XMPlaneDotCoord(m_planes[i], DirectX::XMVECTOR(x, y, z)) < 0.0f)
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3(x, y, z)) < 0.0f)
+		if (DistancePointToPlane(m_planes[i], x, y, z) < 0.0f)
 		{
 			return false;
 		}
 	}
-
-	return true;
-	*/
 
 	return true;
 }
 
 bool FrustumClass::CheckCube(float xCenter, float yCenter, float zCenter, float radius)
 {
-	/*
-	int i;
-
-
-	// Check if any one point of the cube is in the view frustum.
-	for(i=0; i<6; i++) 
+	for (int i = 0; i < 6; i++)
 	{
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - radius), (yCenter - radius), (zCenter - radius))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter - radius, yCenter - radius, zCenter - radius) >= 0.0f)
 			continue;
-		}
-		
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + radius), (yCenter - radius), (zCenter - radius))) >= 0.0f)
-		{
-			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - radius), (yCenter + radius), (zCenter - radius))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter + radius, yCenter - radius, zCenter - radius) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + radius), (yCenter + radius), (zCenter - radius))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter - radius, yCenter + radius, zCenter - radius) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - radius), (yCenter - radius), (zCenter + radius))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter + radius, yCenter + radius, zCenter - radius) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + radius), (yCenter - radius), (zCenter + radius))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter - radius, yCenter - radius, zCenter + radius) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - radius), (yCenter + radius), (zCenter + radius))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter + radius, yCenter - radius, zCenter + radius) >= 0.0f)
 			continue;
-		}
-		
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + radius), (yCenter + radius), (zCenter + radius))) >= 0.0f)
-		{
+
+		if (DistancePointToPlane(m_planes[i], xCenter - radius, yCenter + radius, zCenter + radius) >= 0.0f)
 			continue;
-		}
+
+		if (DistancePointToPlane(m_planes[i], xCenter + radius, yCenter + radius, zCenter + radius) >= 0.0f)
+			continue;
 
 		return false;
 	}
-
-	return true;
-	*/
 
 	return true;
 }
 
 bool FrustumClass::CheckSphere(float xCenter, float yCenter, float zCenter, float radius)
 {
-	/*
-	int i;
-
-
-	// Check if the radius of the sphere is inside the view frustum.
-	for(i=0; i<6; i++) 
+	for (int i = 0; i < 6; i++)
 	{
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3(xCenter, yCenter, zCenter)) < -radius)
+		if (DistancePointToPlane(m_planes[i], xCenter, yCenter, zCenter) < -radius)
 		{
 			return false;
 		}
 	}
 
-	*/
 	return true;
 }
 
 bool FrustumClass::CheckRectangle(float xCenter, float yCenter, float zCenter, float xSize, float ySize, float zSize)
 {
-	/*
-	int i;
-
-
-	// Check if any of the 6 planes of the rectangle are inside the view frustum.
-	for(i=0; i<6; i++)
+	for (int i = 0; i < 6; i++)
 	{
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - xSize), (yCenter - ySize), (zCenter - zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter - xSize, yCenter - ySize, zCenter - zSize) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + xSize), (yCenter - ySize), (zCenter - zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter + xSize, yCenter - ySize, zCenter - zSize) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - xSize), (yCenter + ySize), (zCenter - zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter - xSize, yCenter + ySize, zCenter - zSize) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - xSize), (yCenter - ySize), (zCenter + zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter + xSize, yCenter + ySize, zCenter - zSize) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + xSize), (yCenter + ySize), (zCenter - zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter - xSize, yCenter - ySize, zCenter + zSize) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + xSize), (yCenter - ySize), (zCenter + zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter + xSize, yCenter - ySize, zCenter + zSize) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter - xSize), (yCenter + ySize), (zCenter + zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter - xSize, yCenter + ySize, zCenter + zSize) >= 0.0f)
 			continue;
-		}
 
-		if(D3DXPlaneDotCoord(&m_planes[i], &D3DXVECTOR3((xCenter + xSize), (yCenter + ySize), (zCenter + zSize))) >= 0.0f)
-		{
+		if (DistancePointToPlane(m_planes[i], xCenter + xSize, yCenter + ySize, zCenter + zSize) >= 0.0f)
 			continue;
-		}
 
 		return false;
 	}
-
-	*/
+	
 	return true;
+}
+
+float FrustumClass::DistancePointToPlane(DirectX::XMFLOAT4 plane, float px, float py, float pz)
+{
+	return plane.x * px + plane.y * py + plane.z * pz + plane.w;
 }
