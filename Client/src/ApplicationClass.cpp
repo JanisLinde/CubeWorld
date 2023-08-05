@@ -144,10 +144,7 @@ bool ApplicationClass::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidt
 	m_Network->SetZonePointer(m_BlackForest);
 	m_Network->SetUIPointer(m_UserInterface);
 
-	char ip[] = "192.168.1.138";
-
 	// Initialize the network object.
-	// result = m_Network->Initialize(ip, 7000);
 	result = m_Network->Initialize();
 	if(!result)
 	{

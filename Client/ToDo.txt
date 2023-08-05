@@ -1,1 +1,0 @@
-FrustumCulling is disabled: Need fixing
